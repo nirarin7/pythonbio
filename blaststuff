@@ -1,0 +1,29 @@
+from Bio import SeqIO
+from Bio.Blast import NCBIWWW
+from Bio.Blast import NCBIXML
+
+#first get the sequence we want to parse from a FASTA file
+f_record = next(SeqIO.parse('orchid.fasta', 'fasta'))
+
+print('Doing the BLAST and retrieving the results...')
+result_handle = NCBIWWW.qblast("blastn", "nt", "f_record")
+
+
+
+record = open("orchid.out")
+blast_record = NCBIXML.read(record)
+record.close()
+#print blast_record
+
+for alignment in blast_record.alignments:
+   
+    for hsp in alignment.hsps:
+                       
+                title_element = alignment.title.split()
+                
+                print  (title_element)[1]+" "+title_element[2]+","+" "+alignment.accession\
+                  +","+" "+str(alignment.length)
+                
+                file_out.write(title_element[1]+" "+title_element[2]+","+" "\
+                               +alignment.accession+","+" "+str(alignment.length)+","+\
+                               " "+hsp.sbjct+"\n")
