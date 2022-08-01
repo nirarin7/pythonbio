@@ -97,4 +97,4 @@ def make_rc_record(record):
                        description="reverse complement")
     return rc_rec
 
-##WORKING F YA
+##WORKING!!!
