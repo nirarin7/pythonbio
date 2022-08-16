@@ -16,14 +16,12 @@ for seq_record in SeqIO.parse(path, "fasta", alphabet=IUPAC. ambiguous_dna):  # 
 
 length, id, sequence for each contig
 converts single alpha to IUPAC
-# WORKS! HOORAY!
 
 ### Dictionary keys
 # sepsDic= SeqIO.to_dict(SeqIO.parse(path, "fasta", alphabet=IUPAC.ambiguous_dna))
 # path.close()
 # print(sepsDic.keys())
 # ##Trying to specify dictionary keys
-# ##doesnt work
 
 all_species = []
 for seq_record in SeqIO.parse(path, "fasta") :
@@ -47,7 +45,7 @@ inputFasta.close()
 print("Converted %i records" % count)
 #
 # outputGenbank.read()
-##This may have worked... idk tho
+
 
 ###Reading  gebank file
 seps1gb = open("seps1.gbk")
@@ -57,14 +55,11 @@ for seq_record in SeqIO.parse(seps1gb, "genbank"):
     print("length: ", (len(seq_record)))
 
 ###Converting a file of seq to comp.
-###POssibly working! hooray!
-
 ### extracting data
 #
 # recordIterator=SeqIO.parse(seps1gb, "genbank")
 # firstRecord= recordIterator.next()
 # print(firstRecord)
-##kinda worked
 
 ###Reverse complement conversion
 for record in SeqIO.parse(seps1gb, "genbank"):
@@ -80,5 +75,3 @@ def make_rc_record(record):
                        name="rc_" + record.name, \
                        description="reverse complement")
     return rc_rec
-
-##WORKING!!!
